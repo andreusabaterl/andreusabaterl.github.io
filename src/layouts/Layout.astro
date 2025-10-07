@@ -1,22 +1,113 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+/**
+ * src/layouts/Layout.astro
+ * Full layout for portfolio
+ */
+import "../styles/global.css";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Andreu Sabater — Portfolio",
+  description = "Backend Engineer. Python/Django, microservices, CI/CD & GenAI."
+} = Astro.props;
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Theme color for PWA / address bar -->
+    <meta name="theme-color" content="#0ea5e9" />
+
+    <!-- Optional: preload a variable font (replace if you add one) -->
+    <!-- <link rel="preload" as="font" href="/fonts/InterVariable.woff2" type="font/woff2" crossorigin> -->
+
+    <!-- Initial theme preference (no flicker) -->
+    <script is:inline>
+      try {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (stored === "dark" || (!stored && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch {}
+    </script>
+  </head>
+
+  <body class="bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+    <!-- Skip link for accessibility -->
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-sky-600 text-white px-3 py-2 rounded">
+      Skip to content
+    </a>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 border-b border-slate-200/70 dark:border-slate-800
+                   backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-950/70">
+      <nav class="mx-auto max-w-4xl px-6 h-14 flex items-center justify-between">
+        <a href="/" class="font-semibold tracking-tight">Andreu Sabater</a>
+        <div class="flex items-center gap-5 text-sm">
+          <a href="#experience" class="hover:opacity-80">Experience</a>
+          <a href="#projects" class="hover:opacity-80">Projects</a>
+          <a href="#skills" class="hover:opacity-80">Skills</a>
+          <a href="#contact" class="hover:opacity-80">Contact</a>
+          <button id="theme-toggle"
+                  class="rounded-md border border-slate-200 dark:border-slate-700 px-2 py-1 text-xs
+                         hover:bg-slate-50 dark:hover:bg-slate-800"
+                  aria-label="Toggle dark mode">
+            🌙/☀️
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main id="main">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-24 py-10 border-t border-slate-200/70 dark:border-slate-800">
+      <div class="mx-auto max-w-4xl px-6 text-sm text-slate-500 dark:text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>© {new Date().getFullYear()} Andreu Sabater</p>
+        <div class="flex gap-4">
+          <a href="mailto:andreusabaterl@gmail.com" class="hover:underline">Email</a>
+          <a href="https://linkedin.com/in/andreu-sabater-lópez-067485285" rel="noopener noreferrer" class="hover:underline">LinkedIn</a>
+          <a href="https://github.com/andreusabaterl" rel="noopener noreferrer" class="hover:underline">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Theme toggle script -->
+    <script is:inline>
+      try {
+        document.getElementById("theme-toggle")?.addEventListener("click", () => {
+          const root = document.documentElement;
+          const next = root.classList.contains("dark") ? "light" : "dark";
+          root.classList.toggle("dark");
+          localStorage.setItem("theme", next);
+        });
+      } catch {}
+    </script>
+  </body>
+</html>

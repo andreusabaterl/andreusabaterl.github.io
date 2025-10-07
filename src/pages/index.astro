@@ -1,77 +1,103 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import TimelineItem from '../components/TimelineItem.astro';
 
 const skills = [
-  "Python", "Django", "Java", "JavaScript", "React", "Kotlin",
-  "C++", "C", "Ruby on Rails", "SQL", "DynamoDB",
-  "CI/CD", "Microservices", "Hexagonal Architecture", "Git", "TDD",
-  "OpenAI API", "LangChain", "Twelve Labs SDK", "AWS (basic)"
+  "Python", "Django", "C++", "C", "Java", "JavaScript", "React",
+  "Kotlin", "Rails", "SQL", "PostgreSQL", "DynamoDB",
+  "Redis", "CI/CD", "Docker", "Microservices",
+  "DDD/Hexagonal", "Git", "TDD", "OpenAI API", "LangChain",
+  "Twelve Labs", "AWS (basic)"
 ];
 ---
 
-<Layout title="Andreu Sabater — Portfolio" description="Backend Engineer from Barcelona. Python/Django, microservices, CI/CD and GenAI.">
-  <main class="max-w-4xl mx-auto px-6 py-16 text-gray-800">
-    <!-- HERO -->
-    <header class="mb-16 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-3">Andreu Sabater López</h1>
-      <p class="text-lg text-gray-600 mb-6">Software/Backend Engineer · Barcelona, Spain</p>
-      <p class="max-w-2xl mx-auto text-gray-700">
-        I build scalable backends with Python/Django and microservice architectures.
-        I'm passionate about solid engineering practices (CI/CD, TDD) and integrating Generative AI into real products.
+<Layout title="Andreu Sabater — Portfolio" description="Backend Engineer in Barcelona. Python/Django, microservices, CI/CD & GenAI.">
+  <!-- HERO -->
+  <main class="container-p pt-16">
+    <header class="mb-16 text-center appear">
+      <img src="/avatar.jpg" alt="Andreu Sabater headshot" class="mx-auto mb-5 h-24 w-24 rounded-full ring-2 ring-slate-200 dark:ring-slate-800 object-cover" />
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Andreu Sabater López</h1>
+      <p class="mt-2 text-slate-600 dark:text-slate-400">Software/Backend Engineer · Barcelona, Spain</p>
+      <p class="max-w-2xl mx-auto mt-4 text-slate-700 dark:text-slate-300">
+        I build reliable backends with <strong>Python/Django</strong> and microservice architectures.
+        I care about <strong>CI/CD</strong>, <strong>TDD</strong>, and putting <strong>GenAI</strong> into production.
       </p>
-      <div class="mt-6 flex justify-center gap-4">
-        <a href="mailto:andreusabaterl@gmail.com" class="text-blue-600 hover:underline">Email</a>
-        <a href="https://linkedin.com/in/andreu-sabater-lópez-067485285" class="text-blue-600 hover:underline" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/andreusabaterl" class="text-blue-600 hover:underline" rel="noopener noreferrer">GitHub</a>
+      <div class="mt-6 flex justify-center gap-3">
+        <a href="mailto:andreusabaterl@gmail.com" class="btn-primary">Contact me</a>
+        <a href="https://github.com/andreusabaterl" rel="noopener noreferrer" class="btn">GitHub</a>
+        <a href="/Andreu_Sabater_CV.pdf" class="btn">Resume</a>
       </div>
     </header>
-
-    <!-- EXPERIENCE -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-semibold mb-6 border-b border-gray-200 pb-2">Experience</h2>
-      <article class="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-          <div class="font-medium text-lg">Cleverea — Backend Engineer</div>
-          <div class="text-gray-500">Sep 2024 – Present · Barcelona</div>
-        </div>
-        <ul class="list-disc list-inside text-gray-700 space-y-1">
-          <li>Developing scalable backends with <strong>Python</strong> and <strong>Django</strong> following microservice and DDD principles.</li>
-          <li>Designing and integrating APIs with external systems.</li>
-          <li>Integrating <strong>Generative AI</strong> features using OpenAI, LangChain, and Twelve Labs.</li>
-          <li>Applying <strong>CI/CD</strong>, <strong>TDD</strong>, monitoring, and engineering best practices.</li>
-          <li>Collaborating closely with cross-functional teams.</li>
-        </ul>
-      </article>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-semibold mb-6 border-b border-gray-200 pb-2">Skills</h2>
-      <ul class="flex flex-wrap gap-2">
-        {skills.map((s) => (
-          <li class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">{s}</li>
-        ))}
-      </ul>
-    </section>
-
-    <!-- EDUCATION -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-semibold mb-6 border-b border-gray-200 pb-2">Education</h2>
-      <article>
-        <div class="font-medium text-lg">UPC — Bachelor in Computer Engineering (Software specialization)</div>
-        <div class="text-gray-500 mb-1">Sep 2021 – Jun 2025</div>
-        <p class="text-gray-700 text-sm">Thesis: Optimizing claim management using AI-driven automation.</p>
-      </article>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="text-center">
-      <h2 class="text-2xl font-semibold mb-6 border-b border-gray-200 pb-2 inline-block">Contact</h2>
-      <p class="text-gray-700">
-        <a href="mailto:andreusabaterl@gmail.com" class="block hover:underline">andreusabaterl@gmail.com</a>
-        <a href="https://linkedin.com/in/andreu-sabater-lópez-067485285" class="block hover:underline" rel="noopener noreferrer">LinkedIn</a>
-        <a href="tel:+34636842743" class="block hover:underline">+34 636 842 743</a>
-      </p>
-    </section>
   </main>
+
+  <!-- PROJECTS -->
+  <Section id="projects" title="Selected Projects">
+    <div class="grid sm:grid-cols-2 gap-6">
+      <!-- <ProjectCard title="GenAI Video SDK" timeframe="2024" tech={["Twelve Labs","Python","Poetry","CI"]} href="#">
+        Internal pip-style SDK with typed API, unit tests, and automated releases.
+      </ProjectCard> -->
+    </div>
+  </Section>
+
+  <!-- EXPERIENCE -->
+  <Section id="experience" title="Experience">
+    <ol class="relative border-s-2 border-slate-200 dark:border-slate-800 space-y-8 pl-6">
+      <TimelineItem company="Cleverea" role="Backend Engineer" when="Sep 2024 – Present" location="Barcelona">
+        <ul class="list-disc list-inside space-y-1">
+          <li>Python/Django services with microservices & DDD patterns.</li>
+          <li>3rd-party integrations and internal APIs (auth, billing, docs).</li>
+          <li>Production GenAI features (OpenAI, LangChain, Twelve Labs).</li>
+          <li>CI/CD, TDD, and observability as defaults.</li>
+          <li>Close collaboration with product and data teams.</li>
+        </ul>
+      </TimelineItem>
+    </ol>
+  </Section>
+
+  <!-- SKILLS -->
+  <Section id="skills" title="Skills" subtitle="Learned how to adapt fast to new coding languages.">
+    <div class="card p-5">
+      <ul class="flex flex-wrap gap-2">
+        {skills.map((s) => <li class="chip">{s}</li>)}
+      </ul>
+      <div class="mt-5 grid sm:grid-cols-3 gap-4 text-sm">
+        <div>
+          <div class="text-slate-500 dark:text-slate-400 mb-1">Backend</div>
+          <div class="font-medium">Python · Django · FastAPI · SQL</div>
+        </div>
+        <div>
+          <div class="text-slate-500 dark:text-slate-400 mb-1">Architecture</div>
+          <div class="font-medium">Microservices · DDD/Hexagonal · CQRS (basic)</div>
+        </div>
+        <div>
+          <div class="text-slate-500 dark:text-slate-400 mb-1">Ops</div>
+          <div class="font-medium">Docker · CI/CD · Observability</div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- EDUCATION -->
+  <Section title="Education">
+    <article class="card p-5">
+      <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-1">
+        <div class="font-medium text-lg">UPC — B.Sc. in Computer Engineering (Software)</div>
+        <div class="text-slate-500 dark:text-slate-400">Sep 2021 – Jun 2025</div>
+      </div>
+      <p class="text-sm text-slate-700 dark:text-slate-300">Thesis: Optimization of claims management driven by Artificial Intelligence.</p>
+    </article>
+  </Section>
+
+  <!-- CONTACT -->
+  <Section id="contact" title="Contact" subtitle="I usually reply within 24h.">
+    <div class="text-center">
+      <a href="mailto:andreusabaterl@gmail.com" class="btn-primary">andreusabaterl@gmail.com</a>
+      <div class="mt-3 text-sm">
+        <a href="tel:+34636842743" class="hover:underline">+34 636 842 743</a> ·
+        <a href="https://linkedin.com/in/andreu-sabater-lópez-067485285" class="hover:underline" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </Section>
 </Layout>

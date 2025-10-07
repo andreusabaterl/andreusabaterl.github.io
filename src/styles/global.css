@@ -2,10 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gray-100 text-gray-900 antialiased;
+/* Base */
+@layer base {
+  :root { --ring: 0 0% 0%; }
+  html { text-rendering: optimizeLegibility; }
+  body { @apply bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100; }
+  h1,h2,h3 { @apply font-semibold tracking-tight text-slate-900 dark:text-white; }
+  a { @apply transition-colors; }
 }
 
-h1, h2, h3 {
-  @apply font-semibold text-gray-900;
+/* Components */
+@layer components {
+  .container-p { @apply max-w-4xl mx-auto px-6; }
+
+  .card {
+    @apply rounded-xl border border-slate-200 dark:border-slate-800
+           bg-white/70 dark:bg-slate-900/60
+           shadow-sm hover:shadow transition-shadow;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium
+           bg-sky-50 text-sky-700 border border-sky-200
+           dark:bg-sky-900/40 dark:text-sky-200 dark:border-sky-800;
+    @apply border-opacity-60;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg px-4 py-2
+           border border-slate-200 dark:border-slate-700
+           hover:bg-slate-50 dark:hover:bg-slate-800;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-lg px-4 py-2
+           border-transparent bg-sky-600 text-white hover:bg-sky-700;
+  }
 }
+
+/* Animació */
+@keyframes floatIn { from { opacity:0; transform: translateY(8px);} to {opacity:1; transform:none;} }
+.appear { animation: floatIn .5s ease-out both; }
