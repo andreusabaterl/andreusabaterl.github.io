@@ -68,6 +68,9 @@ const {
            style="background-image: radial-gradient(circle, rgba(100, 116, 139, 0.08) 1px, transparent 1px); background-size: 32px 32px;"></div>
     </div>
 
+    <!-- Scroll progress indicator -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-sky-500 via-blue-500 to-purple-500 z-50 transition-all duration-150 ease-out" style="width: 0%;"></div>
+
     <!-- Skip link for accessibility -->
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-sky-600 text-white px-3 py-2 rounded">
       Skip to content
@@ -88,15 +91,15 @@ const {
                                       after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
             Experience
           </a>
-          <a href="#projects" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
-                                    relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
-                                    after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
-            Projects
-          </a>
           <a href="#skills" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
                                   relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
                                   after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
             Skills
+          </a>
+          <a href="#github" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
+                                   relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
+                                   after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
+            GitHub
           </a>
           <a href="#contact" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
                                    relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
@@ -153,6 +156,23 @@ const {
         const animatedElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-left, .scroll-slide-right');
         animatedElements.forEach(el => observer.observe(el));
       });
+
+      // Scroll progress indicator
+      function updateScrollProgress() {
+        const scrollProgress = document.getElementById('scroll-progress');
+        if (!scrollProgress) return;
+
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / documentHeight) * 100;
+
+        scrollProgress.style.width = progress + '%';
+      }
+
+      window.addEventListener('scroll', updateScrollProgress, { passive: true });
+      window.addEventListener('resize', updateScrollProgress, { passive: true });
+      updateScrollProgress();
     </script>
 
     <!-- Theme toggle script -->

@@ -3,10 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import TimelineItem from '../components/TimelineItem.astro';
+import StatsCounter from '../components/StatsCounter.astro';
+import GitHubStats from '../components/GitHubStats.astro';
 
 const skills = [
-  "Python", "Django", "SQL", "C++", "C", "Java", "JavaScript", "React",
-  "Kotlin", "PostgreSQL", "DDD/Hexagonal", "Git", "AWS (basic)", "DynamoDB",
+  "Python", "Django", "SQL", "C++", "C", "Java", "JavaScript", "React", "Git",
+  "Kotlin", "PostgreSQL", "DDD/Hexagonal", "AWS (basic)", "DynamoDB",
   "Redis", "CI/CD", "Docker", "Microservices", "TDD", "OpenAI API", "LangChain",
   "Twelve Labs", "Rails",
 ];
@@ -71,6 +73,11 @@ const skills = [
         </a>
       </div>
     </header>
+
+    <!-- Stats Counter -->
+    <div class="mt-16">
+      <StatsCounter />
+    </div>
   </main>
 
   <!-- PROJECTS -->
@@ -154,7 +161,7 @@ const skills = [
           </div>
           <div class="h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
             <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-1000 ease-out group-hover:from-purple-600 group-hover:to-pink-600"
-                 style="width: 80%; animation: slideInLeft 1.5s ease-out 0.4s both;"></div>
+                 style="width: 50%; animation: slideInLeft 1.5s ease-out 0.4s both;"></div>
           </div>
         </div>
       </div>
@@ -193,8 +200,13 @@ const skills = [
     </article>
   </Section>
 
+  <!-- GITHUB STATS -->
+  <Section id="github" title="GitHub Activity" subtitle="Starting to introduce my university and open source contributions coding activity">
+    <GitHubStats username="andreusabaterl" />
+  </Section>
+
   <!-- CONTACT -->
-  <Section id="contact" title="Contact" subtitle="I usually reply within 24h.">
+  <Section id="contact" title="Contact">
     <div class="card p-8 scroll-fade-in text-center">
       <div class="max-w-xl mx-auto">
         <!-- Email CTA -->

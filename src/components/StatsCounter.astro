@@ -1,0 +1,92 @@
+---
+interface Stat {
+  value: string;
+  label: string;
+  suffix?: string;
+  icon?: string;
+}
+
+const stats: Stat[] = [
+  { value: "1", label: "Years Experience", suffix: "+", icon: "calendar" },
+  { value: "15", label: "Technologies", suffix: "+", icon: "code" },
+  { value: "100", label: "Commits This Year", suffix: "+", icon: "git" },
+];
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto">
+  {stats.map((stat, index) => (
+    <div class="card p-5 text-center group scroll-fade-in" style={`animation-delay: ${index * 100}ms`}>
+      <!-- Icon -->
+      <div class="mx-auto w-12 h-12 mb-3 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+        {stat.icon === "calendar" && (
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+        )}
+        {stat.icon === "code" && (
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+          </svg>
+        )}
+        {stat.icon === "git" && (
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+          </svg>
+        )}
+        {stat.icon === "clock" && (
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        )}
+      </div>
+
+      <!-- Counter -->
+      <div class="text-3xl md:text-4xl font-bold mb-1 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+        <span class="counter" data-target={stat.value}>0</span>{stat.suffix}
+      </div>
+
+      <!-- Label -->
+      <div class="text-xs md:text-sm text-slate-600 dark:text-slate-400 font-medium">
+        {stat.label}
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  // Animated counter
+  function animateCounter(element: HTMLElement) {
+    const target = parseInt(element.getAttribute('data-target') || '0');
+    const duration = 2000; // 2 seconds
+    const step = target / (duration / 16); // 60fps
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        element.textContent = target.toString();
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current).toString();
+      }
+    }, 16);
+  }
+
+  // Intersection Observer for counters
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target.querySelector('.counter') as HTMLElement;
+        if (counter && counter.textContent === '0') {
+          animateCounter(counter);
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.card').forEach(card => {
+      counterObserver.observe(card);
+    });
+  });
+</script>
