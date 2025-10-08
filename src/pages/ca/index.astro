@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import TimelineItem from '../components/TimelineItem.astro';
-import StatsCounter from '../components/StatsCounter.astro';
-import GitHubStats from '../components/GitHubStats.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/translations';
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import TimelineItem from '../../components/TimelineItem.astro';
+import StatsCounter from '../../components/StatsCounter.astro';
+import GitHubStats from '../../components/GitHubStats.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/translations';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
