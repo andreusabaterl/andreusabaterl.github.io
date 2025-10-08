@@ -1,10 +1,17 @@
 ---
 const { id, title, subtitle } = Astro.props as { id?: string; title: string; subtitle?: string; };
 ---
-<section id={id} class="container-p my-16">
-  <header class="mb-6">
-    <h2 class="text-2xl">{title}</h2>
-    {subtitle && <p class="text-slate-500 dark:text-slate-400 mt-1">{subtitle}</p>}
+<section id={id} class="container-p my-20 scroll-fade-in">
+  <header class="mb-8">
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+      {title}
+    </h2>
+    {subtitle && (
+      <p class="text-base text-slate-600 dark:text-slate-400 mt-2">
+        {subtitle}
+      </p>
+    )}
+    <div class="mt-3 h-1 w-20 bg-gradient-to-r from-sky-500 to-blue-500 rounded-full"></div>
   </header>
   <slot />
 </section>

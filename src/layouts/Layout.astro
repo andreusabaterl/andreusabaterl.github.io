@@ -55,7 +55,19 @@ const {
     </script>
   </head>
 
-  <body class="bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+  <body class="bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100 relative">
+    <!-- Animated background gradients -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+      <!-- Main gradient orbs -->
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-sky-400/20 dark:bg-sky-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-400/20 dark:bg-blue-600/10 rounded-full blur-3xl animate-pulse-slow animate-delay-500"></div>
+      <div class="absolute bottom-1/4 left-1/3 w-96 h-96 bg-purple-400/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse-slow animate-delay-1000"></div>
+
+      <!-- Subtle grid pattern -->
+      <div class="absolute inset-0 bg-grid-slate-100/[0.03] dark:bg-grid-slate-700/[0.03]"
+           style="background-image: radial-gradient(circle, rgba(100, 116, 139, 0.08) 1px, transparent 1px); background-size: 32px 32px;"></div>
+    </div>
+
     <!-- Skip link for accessibility -->
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-sky-600 text-white px-3 py-2 rounded">
       Skip to content
@@ -63,19 +75,41 @@ const {
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 z-40 border-b border-slate-200/70 dark:border-slate-800
-                   backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-950/70">
-      <nav class="mx-auto max-w-4xl px-6 h-14 flex items-center justify-between">
-        <a href="/" class="font-semibold tracking-tight">Andreu Sabater</a>
-        <div class="flex items-center gap-5 text-sm">
-          <a href="#experience" class="hover:opacity-80">Experience</a>
-          <a href="#projects" class="hover:opacity-80">Projects</a>
-          <a href="#skills" class="hover:opacity-80">Skills</a>
-          <a href="#contact" class="hover:opacity-80">Contact</a>
+                   backdrop-blur-md supports-[backdrop-filter]:bg-white/80 dark:supports-[backdrop-filter]:bg-slate-950/80
+                   transition-all duration-300 animate-fade-in-down">
+      <nav class="mx-auto max-w-4xl px-6 h-16 flex items-center justify-between">
+        <a href="/" class="font-bold tracking-tight text-lg bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent
+                           hover:from-sky-700 hover:to-blue-700 transition-all">
+          Andreu Sabater
+        </a>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="#experience" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
+                                      relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
+                                      after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
+            Experience
+          </a>
+          <a href="#projects" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
+                                    relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
+                                    after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
+            Projects
+          </a>
+          <a href="#skills" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
+                                  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
+                                  after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
+            Skills
+          </a>
+          <a href="#contact" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
+                                   relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
+                                   after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
+            Contact
+          </a>
           <button id="theme-toggle"
-                  class="rounded-md border border-slate-200 dark:border-slate-700 px-2 py-1 text-xs
-                         hover:bg-slate-50 dark:hover:bg-slate-800"
+                  class="rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-1.5 text-sm
+                         hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600
+                         transition-all duration-300 hover:shadow-md"
                   aria-label="Toggle dark mode">
-            🌙/☀️
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
           </button>
         </div>
       </nav>
@@ -98,12 +132,39 @@ const {
       </div>
     </footer>
 
+    <!-- Scroll animations script -->
+    <script>
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with scroll animation classes
+      document.addEventListener('DOMContentLoaded', () => {
+        const animatedElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-left, .scroll-slide-right');
+        animatedElements.forEach(el => observer.observe(el));
+      });
+    </script>
+
     <!-- Theme toggle script -->
     <script is:inline>
       try {
         document.getElementById("theme-toggle")?.addEventListener("click", () => {
           const root = document.documentElement;
           const next = root.classList.contains("dark") ? "light" : "dark";
+
+          // Add transition class
+          root.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+
           root.classList.toggle("dark");
           localStorage.setItem("theme", next);
         });
