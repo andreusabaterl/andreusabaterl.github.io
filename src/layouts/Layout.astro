@@ -85,35 +85,28 @@ const {
     <header class="sticky top-0 z-40 border-b border-slate-200/70 dark:border-slate-800
                    backdrop-blur-md supports-[backdrop-filter]:bg-white/80 dark:supports-[backdrop-filter]:bg-slate-950/80
                    transition-all duration-300 animate-fade-in-down">
-      <nav class="mx-auto max-w-4xl px-6 h-16 flex items-center justify-between">
-        <a href="/" class="font-bold tracking-tight text-lg bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent
+      <nav class="mx-auto max-w-4xl px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
+        <a href="/" class="font-bold tracking-tight text-base sm:text-lg bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent
                            hover:from-sky-700 hover:to-blue-700 transition-all">
           Andreu Sabater
         </a>
-        <div class="flex items-center gap-6 text-sm">
-          <a href="#experience" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
+        <div class="flex items-center gap-2 sm:gap-4 md:gap-6 text-xs sm:text-sm">
+          <a href="#experience" class="hidden md:block hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
                                       relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
                                       after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
             {t('nav.experience')}
           </a>
-          <a href="#skills" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
+          <a href="#skills" class="hidden md:block hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
                                   relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
                                   after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
             {t('nav.skills')}
           </a>
-          <a href="#github" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
-                                   relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
-                                   after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
-            {t('nav.github')}
-          </a>
-          <a href="#contact" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
-                                   relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
-                                   after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
+          <a href="#contact" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium">
             {t('nav.contact')}
           </a>
           <LanguagePicker currentLang={lang} />
           <button id="theme-toggle"
-                  class="rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-1.5 text-sm
+                  class="rounded-lg border border-slate-200 dark:border-slate-700 px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm
                          hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600
                          transition-all duration-300 hover:shadow-md"
                   aria-label="Toggle dark mode">
