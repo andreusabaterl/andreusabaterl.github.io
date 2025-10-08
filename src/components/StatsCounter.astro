@@ -1,4 +1,9 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/translations';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 interface Stat {
   value: string;
   label: string;
@@ -7,13 +12,12 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: "1", label: "Years Experience", suffix: "+", icon: "calendar" },
-  { value: "15", label: "Technologies", suffix: "+", icon: "code" },
-  { value: "100", label: "Commits This Year", suffix: "+", icon: "git" },
+  { value: "1", label: t('stats.years'), suffix: "+", icon: "calendar" },
+  { value: "15", label: t('stats.technologies'), suffix: "+", icon: "code" },
 ];
 ---
 
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-2xl mx-auto">
   {stats.map((stat, index) => (
     <div class="card p-5 text-center group scroll-fade-in" style={`animation-delay: ${index * 100}ms`}>
       <!-- Icon -->
@@ -26,16 +30,6 @@ const stats: Stat[] = [
         {stat.icon === "code" && (
           <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-          </svg>
-        )}
-        {stat.icon === "git" && (
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-          </svg>
-        )}
-        {stat.icon === "clock" && (
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
         )}
       </div>

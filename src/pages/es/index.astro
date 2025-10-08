@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import TimelineItem from '../components/TimelineItem.astro';
-import StatsCounter from '../components/StatsCounter.astro';
-import GitHubStats from '../components/GitHubStats.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/translations';
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import TimelineItem from '../../components/TimelineItem.astro';
+import StatsCounter from '../../components/StatsCounter.astro';
+import GitHubStats from '../../components/GitHubStats.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/translations';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -84,7 +84,7 @@ const skills = [
   </main>
 
   <!-- PROJECTS -->
-  <!-- <Section id="projects" title="Selected Projects">
+  <!-- <Section id="projects" title="Proyectos">
     <div class="grid sm:grid-cols-2 gap-6">
       <ProjectCard title="GenAI Video SDK" timeframe="2024" tech={["Twelve Labs","Python","Poetry","CI"]} href="#">
         Internal pip-style SDK with typed API, unit tests, and automated releases.
@@ -95,7 +95,7 @@ const skills = [
   <!-- EXPERIENCE -->
   <Section id="experience" title={t('section.experience')}>
     <ol class="relative border-s-2 border-slate-200 dark:border-slate-800 space-y-8 pl-6">
-      <TimelineItem company="Cleverea" role={t('experience.cleverea.role')} when="Sep 2024 – Present" location={t('experience.cleverea.location')}>
+      <TimelineItem company="Cleverea" role={t('experience.cleverea.role')} when="Sep 2024 – Actualidad" location={t('experience.cleverea.location')}>
         <ul class="list-disc list-inside space-y-1">
           <li>{t('experience.cleverea.desc1')}</li>
           <li>{t('experience.cleverea.desc2')}</li>

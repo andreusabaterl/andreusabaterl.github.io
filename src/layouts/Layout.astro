@@ -4,11 +4,16 @@
  * Full layout for portfolio
  */
 import "../styles/global.css";
+import { getLangFromUrl, useTranslations } from '../i18n/translations';
+import LanguagePicker from '../components/LanguagePicker.astro';
 
 interface Props {
   title?: string;
   description?: string;
 }
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const {
   title = "Andreu Sabater — Portfolio",
@@ -16,7 +21,7 @@ const {
 } = Astro.props;
 ---
 
-<html lang="en" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -89,23 +94,24 @@ const {
           <a href="#experience" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
                                       relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
                                       after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
-            Experience
+            {t('nav.experience')}
           </a>
           <a href="#skills" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
                                   relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
                                   after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
-            Skills
+            {t('nav.skills')}
           </a>
           <a href="#github" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
                                    relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
                                    after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
-            GitHub
+            {t('nav.github')}
           </a>
           <a href="#contact" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium
                                    relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
                                    after:bg-sky-600 dark:after:bg-sky-400 after:transition-all hover:after:w-full">
-            Contact
+            {t('nav.contact')}
           </a>
+          <LanguagePicker currentLang={lang} />
           <button id="theme-toggle"
                   class="rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-1.5 text-sm
                          hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600

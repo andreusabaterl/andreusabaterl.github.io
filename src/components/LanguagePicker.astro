@@ -1,0 +1,78 @@
+---
+import { languages } from '../i18n/translations';
+
+const { currentLang = 'en' } = Astro.props;
+---
+
+<div class="relative language-picker">
+  <button
+    id="language-toggle"
+    class="rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-1.5 text-sm font-medium
+           hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600
+           transition-all duration-300 hover:shadow-md flex items-center gap-2"
+    aria-label="Change language"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+    </svg>
+    <span class="uppercase">{currentLang}</span>
+    <svg class="w-3 h-3 transition-transform duration-200" id="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+
+  <div
+    id="language-menu"
+    class="absolute right-0 mt-2 w-40 rounded-lg border border-slate-200 dark:border-slate-700
+           bg-white dark:bg-slate-900 shadow-xl backdrop-blur-sm
+           opacity-0 invisible transition-all duration-200 z-50"
+  >
+    {Object.entries(languages).map(([code, name]) => (
+      <a
+        href={code === 'en' ? '/' : `/${code}`}
+        class={`block px-4 py-2.5 text-sm first:rounded-t-lg last:rounded-b-lg
+                hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors
+                ${currentLang === code ? 'bg-sky-50 dark:bg-sky-900/20 text-sky-600 dark:text-sky-400 font-semibold' : ''}`}
+      >
+        <div class="flex items-center justify-between">
+          <span>{name}</span>
+          {currentLang === code && (
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+          )}
+        </div>
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('language-toggle');
+    const menu = document.getElementById('language-menu');
+    const chevron = document.getElementById('chevron');
+
+    if (!toggle || !menu || !chevron) return;
+
+    toggle.addEventListener('click', () => {
+      const isVisible = !menu.classList.contains('invisible');
+
+      if (isVisible) {
+        menu.classList.add('opacity-0', 'invisible');
+        chevron.style.transform = 'rotate(0deg)';
+      } else {
+        menu.classList.remove('opacity-0', 'invisible');
+        chevron.style.transform = 'rotate(180deg)';
+      }
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!toggle.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+        menu.classList.add('opacity-0', 'invisible');
+        chevron.style.transform = 'rotate(0deg)';
+      }
+    });
+  });
+</script>
