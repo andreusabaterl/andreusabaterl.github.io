@@ -1,14 +1,23 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Section from '../../components/Section.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
-import TimelineItem from '../../components/TimelineItem.astro';
-import StatsCounter from '../../components/StatsCounter.astro';
-import GitHubStats from '../../components/GitHubStats.astro';
-import { getLangFromUrl, useTranslations } from '../../i18n/translations';
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import TimelineItem from '../components/TimelineItem.astro';
+import StatsCounter from '../components/StatsCounter.astro';
+import GitHubStats from '../components/GitHubStats.astro';
+import { useTranslations } from '../i18n/translations';
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+export function getStaticPaths() {
+  return [
+    { params: { lang: undefined } }, // Root path for English
+    { params: { lang: 'es' } },
+    { params: { lang: 'ca' } },
+  ];
+}
+
+const langParam = Astro.params.lang;
+const lang = langParam || 'en';
+const t = useTranslations(lang as 'en' | 'es' | 'ca');
 
 const skills = [
   "Python", "Django", "SQL", "C++", "C", "Java", "JavaScript", "React", "Git",
@@ -18,7 +27,7 @@ const skills = [
 ];
 ---
 
-<Layout title="Andreu Sabater — Portfolio" description="Backend Engineer in Barcelona. Python/Django, microservices, CI/CD & GenAI.">
+<Layout title="Andreu Sabater — Portfolio" description="Backend Engineer in Barcelona. Python/Django, microservices, CI/CD & GenAI." lang={lang}>
   <!-- HERO -->
   <main class="container-p pt-12 sm:pt-16 md:pt-20 pb-8">
     <header class="mb-12 sm:mb-16 md:mb-20 text-center">
@@ -79,7 +88,7 @@ const skills = [
 
     <!-- Stats Counter -->
     <div class="mt-16">
-      <StatsCounter />
+      <StatsCounter lang={lang} />
     </div>
   </main>
 
