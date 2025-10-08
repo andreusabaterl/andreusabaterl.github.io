@@ -10,35 +10,67 @@ import LanguagePicker from '../components/LanguagePicker.astro';
 interface Props {
   title?: string;
   description?: string;
+  lang?: string;
 }
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const currentLang = (Astro.props.lang || getLangFromUrl(Astro.url)) as "en" | "es" | "ca";
+const t = useTranslations(currentLang);
 
 const {
   title = "Andreu Sabater — Portfolio",
   description = "Backend Engineer. Python/Django, microservices, CI/CD & GenAI."
 } = Astro.props;
+
+// Construct canonical URL
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://andreusabaterl.github.io');
+
+// Construct alternate URLs for languages
+const baseUrl = Astro.site || 'https://andreusabaterl.github.io';
+const alternateUrls = {
+  en: baseUrl,
+  es: `${baseUrl}/es`,
+  ca: `${baseUrl}/ca`
+};
 ---
 
-<html lang={lang} class="scroll-smooth">
+<html lang={currentLang} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="Andreu Sabater López" />
+    <meta name="keywords" content="Backend Engineer, Python, Django, DDD, Hexagonal Architecture, CI/CD, TDD, GenAI, Barcelona, Software Engineer" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Alternate language versions -->
+    <link rel="alternate" hreflang="en" href={alternateUrls.en} />
+    <link rel="alternate" hreflang="es" href={alternateUrls.es} />
+    <link rel="alternate" hreflang="ca" href={alternateUrls.ca} />
+    <link rel="alternate" hreflang="x-default" href={alternateUrls.en} />
 
     <!-- Favicons -->
     <link rel="icon" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Open Graph / Twitter -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/og.png" />
+    <meta property="og:image" content={`${baseUrl}/og.png`} />
+    <meta property="og:locale" content={currentLang === 'en' ? 'en_US' : currentLang === 'es' ? 'es_ES' : 'ca_ES'} />
+    <meta property="og:site_name" content="Andreu Sabater Portfolio" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${baseUrl}/og.png`} />
 
     <!-- Theme color for PWA / address bar -->
     <meta name="theme-color" content="#0ea5e9" />
@@ -104,7 +136,7 @@ const {
           <a href="#contact" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors font-medium">
             {t('nav.contact')}
           </a>
-          <LanguagePicker currentLang={lang} />
+          <LanguagePicker currentLang={currentLang} />
           <button id="theme-toggle"
                   class="rounded-lg border border-slate-200 dark:border-slate-700 px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm
                          hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600
