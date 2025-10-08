@@ -78,7 +78,7 @@ export const translations = {
     // Hero
     'hero.role': 'Ingeniero de Software/Backend · Barcelona, España',
     'hero.tagline': 'Ingeniero Informático con ganas de crecer, aprender y contribuir en proyectos interesantes.',
-    'hero.description': 'Actualmente construyendo backends confiables con {python} y arquitectura {hexagonal}. Me importa {cicd}, {tdd} y aplicar {genai} en producción.',
+    'hero.description': 'Actualmente construyendo backends estables con {python} y arquitectura {hexagonal}. Me importa {cicd}, {tdd} y aplicar {genai} en producción.',
     'hero.contact': 'Contáctame',
     'hero.github': 'GitHub',
     'hero.resume': 'CV',
@@ -139,7 +139,7 @@ export const translations = {
     // Hero
     'hero.role': 'Enginyer de Software/Backend · Barcelona, Espanya',
     'hero.tagline': 'Enginyer Informàtic amb ganes de créixer, aprendre i contribuir a projectes interessants.',
-    'hero.description': 'Actualment construint backends fiables amb {python} i arquitectura {hexagonal}. M\'importa {cicd}, {tdd} i aplicar {genai} en producció.',
+    'hero.description': 'Actualment construint backends estables amb {python} i arquitectura {hexagonal}. M\'importa {cicd}, {tdd} i aplicar {genai} en producció.',
     'hero.contact': 'Contacta\'m',
     'hero.github': 'GitHub',
     'hero.resume': 'CV',
