@@ -211,13 +211,19 @@ const alternateUrls = {
       try {
         document.getElementById("theme-toggle")?.addEventListener("click", () => {
           const root = document.documentElement;
+          const body = document.body;
           const next = root.classList.contains("dark") ? "light" : "dark";
 
-          // Add transition class
-          root.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+          // Force a repaint on iOS Safari by triggering a reflow
+          body.style.transform = 'translateZ(0)';
 
           root.classList.toggle("dark");
           localStorage.setItem("theme", next);
+
+          // Remove the transform after transition
+          setTimeout(() => {
+            body.style.transform = '';
+          }, 350);
         });
       } catch {}
     </script>
