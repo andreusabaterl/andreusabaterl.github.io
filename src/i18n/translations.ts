@@ -51,8 +51,12 @@ export const translations = {
     'section.education': 'Education',
     'education.degree': 'Degree in Computer Engineering (Software)',
     'education.university': 'Universitat Politècnica de Catalunya (UPC)',
-    'education.thesis': 'Thesis:',
+    'education.thesis': 'Download PDF',
     'education.thesis.title': 'Optimization of claims management driven by Artificial Intelligence.',
+
+  // Thesis Abstract
+  'thesis.abstract.title': 'Abstract',
+  'thesis.abstract.text': 'This Final Degree Project corresponds to the Computer Engineering degree at Universitat Politècnica de Catalunya. The project involved the development of a technological solution based on <strong>generative artificial intelligence</strong>, capable of generating concise and complete summaries of a claim’s status in real time (including <strong>text 📝, images 🖼️, videos 🎥 and PDFs 📄</strong>). This tool has enabled Cleverea’s agents to efficiently understand each case’s situation, improving both internal productivity and customer satisfaction.',
 
     // GitHub
     'section.github': 'GitHub Activity',
@@ -112,8 +116,12 @@ export const translations = {
     'section.education': 'Educación',
     'education.degree': 'Grado en Ingeniería Informática (Software)',
     'education.university': 'Universitat Politècnica de Catalunya (UPC)',
-    'education.thesis': 'Tesis:',
+    'education.thesis': 'Descarga el PDF',
     'education.thesis.title': 'Optimización de la gestión de siniestros impulsada por Inteligencia Artificial.',
+
+  // Thesis Abstract
+  'thesis.abstract.title': 'Resumen',
+  'thesis.abstract.text': 'Este Trabajo de Fin de Grado corresponde al grado en Ingeniería Informática de la Facultad de Informática de Barcelona en la Universitat Politècnica de Catalunya. En el proyecto se ha desarrollado una solución tecnológica basada en <strong>inteligencia artificial generativa</strong>, capaz de generar resúmenes concisos pero completos del estado de un siniestro en tiempo real (incluyendo <strong>texto 📝, imágenes 🖼️, vídeos 🎥 y PDFs 📄</strong>). Esta herramienta ha permitido a los agentes de Cleverea comprender de forma eficiente la situación de cada caso, mejorando tanto la productividad interna como la satisfacción de los clientes.',
 
     // GitHub
     'section.github': 'Actividad en GitHub',
@@ -173,8 +181,12 @@ export const translations = {
     'section.education': 'Educació',
     'education.degree': 'Grau en Enginyeria Informàtica (Software)',
     'education.university': 'Universitat Politècnica de Catalunya (UPC)',
-    'education.thesis': 'Tesi:',
+    'education.thesis': 'Descàrrega el PDF',
     'education.thesis.title': 'Optimització de la gestió de sinistres impulsada per Intel·ligència Artificial.',
+
+  // Thesis Abstract
+  'thesis.abstract.title': 'Resum',
+  'thesis.abstract.text': 'Aquest Treball de Final d’Estudis, correspon al grau d’Enginyeria Informàtica de la Facultat d’Informàtica de Barcelona a la Universitat Politècnica de Catalunya. En el projecte s’ha desenvolupat una solució tecnològica basada en <strong>intel·ligència artificial generativa</strong> capaç de generar resums concisos però complets de l’estat d’un sinistre en temps real (incloent <strong>text 📝, imatges 🖼️, vídeos 🎥 i PDFs 📄</strong>). Aquesta eina ha permès als agents de Cleverea comprendre de manera eficient la situació de cada cas, millorant tant la productivitat interna com la satisfacció dels clients.',
 
     // GitHub
     'section.github': 'Activitat a GitHub',

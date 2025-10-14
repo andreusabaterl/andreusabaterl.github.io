@@ -93,13 +93,14 @@ const skills = [
   </main>
 
   <!-- PROJECTS -->
-  <!-- <Section id="projects" title="Selected Projects">
+  <Section id="projects" title="Selected Projects">
     <div class="grid sm:grid-cols-2 gap-6">
-      <ProjectCard title="GenAI Video SDK" timeframe="2024" tech={["Twelve Labs","Python","Poetry","CI"]} href="#">
-        Internal pip-style SDK with typed API, unit tests, and automated releases.
+      <ProjectCard title={t('education.thesis')} timeframe="2025" tech={["Python", "AI", "LangChain", "TwelveLabs SDK", "OpenAI API", "Django"]} href="/Memoria-andreu.sabater.pdf">
+        <strong>{t('education.thesis.title')}</strong><br />
+        <span set:html={t('thesis.abstract.text')} />
       </ProjectCard>
     </div>
-  </Section> -->
+  </Section>
 
   <!-- EXPERIENCE -->
   <Section id="experience" title={t('section.experience')}>
@@ -211,6 +212,8 @@ const skills = [
       </div>
     </article>
   </Section>
+
+    <!-- ...existing code... -->
 
   <!-- GITHUB STATS -->
   <!-- <Section id="github" title={t('section.github')} subtitle={t('github.subtitle')}>
