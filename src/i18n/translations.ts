@@ -31,9 +31,9 @@ export const translations = {
     'section.experience': 'Experience',
     'experience.cleverea.role': 'Backend Engineer',
     'experience.cleverea.location': 'Barcelona',
-    'experience.cleverea.desc1': 'Python/Django services with microservices & DDD patterns.',
+    'experience.cleverea.desc1': 'Python/Django services with microservices & hexagonal architecture.',
     'experience.cleverea.desc2': '3rd-party integrations and internal APIs (auth, docs).',
-    'experience.cleverea.desc3': 'Production GenAI features (OpenAI, LangChain, Twelve Labs).',
+    'experience.cleverea.desc3': 'GenAI integrations (OpenAI, LangChain, Twelve Labs).',
     'experience.cleverea.desc4': 'CI/CD, TDD, and observability as defaults.',
     'experience.cleverea.desc5': 'Close collaboration with product and data teams.',
 
@@ -43,7 +43,7 @@ export const translations = {
     'skills.backend': 'Backend',
     'skills.backend.tech': 'Python · Django · SQL',
     'skills.architecture': 'Architecture',
-    'skills.architecture.tech': 'Microservices · DDD/Hexagonal',
+    'skills.architecture.tech': 'Microservices · GenAI · Hexagonal',
     'skills.ops': 'Ops & DevOps',
     'skills.ops.tech': 'Docker · CI/CD · AWS',
 
@@ -96,9 +96,9 @@ export const translations = {
     'section.experience': 'Experiencia',
     'experience.cleverea.role': 'Ingeniero Backend',
     'experience.cleverea.location': 'Barcelona',
-    'experience.cleverea.desc1': 'Servicios Python/Django con microservicios y patrones DDD.',
+    'experience.cleverea.desc1': 'Servicios Python/Django con microservicios y arquitectura hexagonal.',
     'experience.cleverea.desc2': 'Integraciones de terceros y APIs internas (auth, docs).',
-    'experience.cleverea.desc3': 'Integración de GenAI en producción (OpenAI, LangChain, Twelve Labs).',
+    'experience.cleverea.desc3': 'Integraciones de inteligencia artificial generativa (OpenAI, LangChain, Twelve Labs).',
     'experience.cleverea.desc4': 'CI/CD, TDD y observabilidad como estándares.',
     'experience.cleverea.desc5': 'Colaboración cercana con equipos de producto y datos.',
 
@@ -108,7 +108,7 @@ export const translations = {
     'skills.backend': 'Backend',
     'skills.backend.tech': 'Python · Django · SQL',
     'skills.architecture': 'Arquitectura',
-    'skills.architecture.tech': 'Microservicios · DDD/Hexagonal',
+    'skills.architecture.tech': 'Microservicios · Inteligencia Artificial Generativa · Hexagonal',
     'skills.ops': 'Ops y DevOps',
     'skills.ops.tech': 'Docker · CI/CD · AWS',
 
@@ -161,9 +161,9 @@ export const translations = {
     'section.experience': 'Experiència',
     'experience.cleverea.role': 'Enginyer Backend',
     'experience.cleverea.location': 'Barcelona',
-    'experience.cleverea.desc1': 'Serveis Python/Django amb microserveis i patrons DDD.',
+    'experience.cleverea.desc1': 'Serveis Python/Django amb microserveis i arquitectura hexagonal.',
     'experience.cleverea.desc2': 'Integracions de tercers i APIs internes (auth, docs).',
-    'experience.cleverea.desc3': 'Funcionalitats GenAI en producció (OpenAI, LangChain, Twelve Labs).',
+    'experience.cleverea.desc3': 'Integracions d\'intel·ligència artificial generativa (OpenAI, LangChain, Twelve Labs).',
     'experience.cleverea.desc4': 'CI/CD, TDD i observabilitat com a estàndards.',
     'experience.cleverea.desc5': 'Col·laboració propera amb equips de producte i dades.',
 
@@ -173,7 +173,7 @@ export const translations = {
     'skills.backend': 'Backend',
     'skills.backend.tech': 'Python · Django · SQL',
     'skills.architecture': 'Arquitectura',
-    'skills.architecture.tech': 'Microserveis · DDD/Hexagonal',
+    'skills.architecture.tech': 'Microserveis · Intel·ligència Artificial Generativa · Hexagonal',
     'skills.ops': 'Ops i DevOps',
     'skills.ops.tech': 'Docker · CI/CD · AWS',
 

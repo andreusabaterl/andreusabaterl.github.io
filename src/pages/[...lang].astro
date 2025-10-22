@@ -20,14 +20,14 @@ const lang = langParam || 'en';
 const t = useTranslations(lang as 'en' | 'es' | 'ca');
 
 const skills = [
-  "Python", "Django", "SQL", "C++", "C", "Java", "JavaScript", "React", "Git",
-  "Kotlin", "PostgreSQL", "DDD/Hexagonal", "AWS (basic)", "DynamoDB",
-  "Redis", "CI/CD", "Docker", "Microservices", "TDD", "OpenAI API", "LangChain",
-  "Twelve Labs", "Rails",
+  "Python", "Django", "GenAI", "OpenAI API", "LangChain",
+  "Twelve Labs", "SQL", "CI/CD", "C++", "C", "Java", "JavaScript", "React", "Git",
+  "Kotlin", "PostgreSQL", "Hexagonal", "AWS (basic)", "DynamoDB",
+  "Redis", "Docker", "Microservices", "TDD", "Rails",
 ];
 ---
 
-<Layout title="Andreu Sabater — Portfolio" description="Backend Engineer in Barcelona. Python/Django, microservices, DDD, CI/CD & GenAI." lang={lang}>
+<Layout title="Andreu Sabater — Portfolio" description="Backend Engineer in Barcelona. Python/Django, GenAI, CI/CD & Microservices." lang={lang}>
   <!-- HERO -->
   <main class="container-p pt-12 sm:pt-16 md:pt-20 pb-8">
     <header class="mb-12 sm:mb-16 md:mb-20 text-center">
@@ -60,7 +60,7 @@ const skills = [
 
       <!-- Main description with highlights -->
       <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed px-4 animate-fade-in-up animate-delay-400">
-        {t('hero.description').split('{python}')[0]}<strong class="text-sky-600 dark:text-sky-400 font-semibold">Python/Django</strong>{t('hero.description').split('{python}')[1].split('{hexagonal}')[0]}<strong class="text-emerald-600 dark:text-emerald-400 font-semibold">DDD/Hexagonal</strong>{t('hero.description').split('{hexagonal}')[1].split('{cicd}')[0]}<strong class="text-blue-600 dark:text-blue-400 font-semibold">CI/CD</strong>{t('hero.description').split('{cicd}')[1].split('{tdd}')[0]}<strong class="text-purple-600 dark:text-purple-400 font-semibold">TDD</strong>{t('hero.description').split('{tdd}')[1].split('{genai}')[0]}<strong class="text-indigo-600 dark:text-indigo-400 font-semibold">GenAI</strong>{t('hero.description').split('{genai}')[1]}
+        {t('hero.description').split('{python}')[0]}<strong class="text-sky-600 dark:text-sky-400 font-semibold">Python/Django</strong>{t('hero.description').split('{python}')[1].split('{hexagonal}')[0]}<strong class="text-emerald-600 dark:text-emerald-400 font-semibold">Hexagonal</strong>{t('hero.description').split('{hexagonal}')[1].split('{cicd}')[0]}<strong class="text-blue-600 dark:text-blue-400 font-semibold">CI/CD</strong>{t('hero.description').split('{cicd}')[1].split('{tdd}')[0]}<strong class="text-purple-600 dark:text-purple-400 font-semibold">TDD</strong>{t('hero.description').split('{tdd}')[1].split('{genai}')[0]}<strong class="text-indigo-600 dark:text-indigo-400 font-semibold">GenAI</strong>{t('hero.description').split('{genai}')[1]}
       </p>
 
       <!-- CTA Buttons with stagger -->
@@ -157,7 +157,7 @@ const skills = [
           </div>
           <div class="h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
             <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 ease-out group-hover:from-blue-600 group-hover:to-purple-600"
-                 style="width: 85%; animation: slideInLeft 1.5s ease-out 0.2s both;"></div>
+                 style="width: 75%; animation: slideInLeft 1.5s ease-out 0.2s both;"></div>
           </div>
         </div>
 
@@ -174,7 +174,7 @@ const skills = [
           </div>
           <div class="h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
             <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-1000 ease-out group-hover:from-purple-600 group-hover:to-pink-600"
-                 style="width: 50%; animation: slideInLeft 1.5s ease-out 0.4s both;"></div>
+                 style="width: 35%; animation: slideInLeft 1.5s ease-out 0.4s both;"></div>
           </div>
         </div>
       </div>

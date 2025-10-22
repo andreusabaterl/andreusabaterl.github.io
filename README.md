@@ -1,6 +1,6 @@
 # Andreu Sabater Portfolio
 
-Personal portfolio website showcasing my experience as a Backend Engineer specializing in Python/Django, DDD/Hexagonal Architecture, CI/CD, and GenAI.
+Personal portfolio website showcasing my experience as a Backend Engineer specializing in Python/Django, Hexagonal Architecture, CI/CD, and GenAI.
 
 🌐 **Live Site:** [andreusabaterl.github.io](https://andreusabaterl.github.io)
 

@@ -74,7 +74,7 @@ const imageResponse = new ImageResponse(
                     marginTop: '12px',
                     fontWeight: '400',
                   },
-                  children: 'Python/Django • Microservices • DDD • CI/CD • GenAI',
+                  children: 'Python/Django • Microservices • CI/CD • GenAI',
                 },
               },
               // Location badge
